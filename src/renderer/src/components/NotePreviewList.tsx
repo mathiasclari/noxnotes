@@ -12,7 +12,7 @@ export const NotePreviewList = ({ onSelect, className, ...props }: NotePreviewLi
   const { notes, selectedNoteIndex, handleNoteClick } = useNotesList({ onSelect })
   if (notes.length === 0) {
     return (
-      <ul className={twMerge('text-center pt-4', className)} {...props}>
+      <ul className={twMerge('text-center pt-4 text-red-400', className)} {...props}>
         <span>No notes yet</span>
       </ul>
     )
