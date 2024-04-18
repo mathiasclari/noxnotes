@@ -10,7 +10,11 @@ export const NewNoteButton = ({ ...props }: ActionButtonProps) => {
     createEmptyNote()
   }
   return (
-    <ActionButton onClick={handleCreation} {...props}>
+    <ActionButton
+      className="bg-green-500/25 hover:bg-green-700/25"
+      onClick={handleCreation}
+      {...props}
+    >
       <FaFileCirclePlus className="w-5 h-5 text-zinc-300" />
     </ActionButton>
   )

@@ -7,7 +7,7 @@ const dateFormattor = new Intl.DateTimeFormat('en-US', {
   timeZone: 'Europe/Ljubljana'
 })
 
-export const formatDateFromMS = (ms: number) => dateFormattor.format(ms)
+export const formatDateFromMs = (ms: number) => dateFormattor.format(ms)
 
 export const cn = (...args: ClassValue[]) => {
   return twMerge(clsx(...args))
