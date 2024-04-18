@@ -1,10 +1,18 @@
+import { cn, formatDateFromMs } from '@renderer/utils'
 import { NoteInfo } from '@shared/models'
 import { ComponentProps } from 'react'
-import { cn, formatDateFromMS } from '@renderer/utils'
+import { FaFileAlt } from 'react-icons/fa'
 
 export type NotePreviewProps = NoteInfo & {
   isActive?: boolean
 } & ComponentProps<'div'>
+
+const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'pink', 'orange']
+
+const getRandomColor = () => {
+  const randomIndex = Math.floor(Math.random() * colors.length)
+  return colors[randomIndex]
+}
 
 export const NotePreview = ({
   title,
@@ -14,18 +22,28 @@ export const NotePreview = ({
   className,
   ...props
 }: NotePreviewProps) => {
-  const date = formatDateFromMS(lastEditTime)
+  const date = formatDateFromMs(lastEditTime)
+
   return (
     <div
       className={cn(
-        'cursor-pointer px-2.5 py-3 rounded-md transition-colors duration-75',
-        { 'bg-zinc-400/75': isActive, 'hover:bg-zinc-500/75': !isActive },
+        'flex items-stretch p-4 rounded-lg transition-all duration-200',
+        {
+          'bg-zinc-400/75': isActive,
+          'hover:bg-zinc-500/75': !isActive
+        },
         className
       )}
       {...props}
     >
-      <h3 className="mb-1 font-bold truncate">{title}</h3>
-      <span className="inline-block w-full mb-2 text-xs font-light text-left">{date}</span>
+      <div className="flex items-center justify-center w-1/6">
+        <FaFileAlt className="w-6 h-6 text-cyan-500" />
+      </div>
+      <div className="flex flex-col justify-start pl-4 w-5/6">
+        <h3 className="mb-2 text-lg font-semibold truncate">{title}</h3>
+        <span className="text-sm text-gray-500">{date}</span>
+        <p className="mt-2 text-sm text-gray-700">{content}</p>
+      </div>
     </div>
   )
 }

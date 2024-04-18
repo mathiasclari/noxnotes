@@ -1,6 +1,6 @@
 import { ActionButton } from '@/components'
 import { ActionButtonProps } from './ActionButton'
-import { FaRegTrashCan } from 'react-icons/fa6'
+import { FaFileCircleMinus } from 'react-icons/fa6'
 import { useSetAtom } from 'jotai'
 import { deleteNoteAtom } from '@/store'
 
@@ -11,8 +11,8 @@ export const DeleteNoteButton = ({ ...props }: ActionButtonProps) => {
     deleteNote()
   }
   return (
-    <ActionButton onClick={handleDeletion} {...props}>
-      <FaRegTrashCan className="w-4 h-4 text-zinc-300" />
+    <ActionButton className="bg-red-500/25 hover:bg-red-700/25" onClick={handleDeletion} {...props}>
+      <FaFileCircleMinus className="w-5 h-5 text-zinc-300" />
     </ActionButton>
   )
 }
